@@ -1,0 +1,40 @@
+type: install
+id: static-copy-nginx
+name: Static Copy w/ Nginx
+
+description: 
+  text: Host a static copy of a website with Nginx (and HTTrack).
+
+settings:
+  fields:
+    - hideLabel: false
+      hidden: false
+      type: string
+      caption: URL
+      name: url_to_mirror
+    - hideLabel: false
+      hidden: false
+      type: string
+      caption: Email
+      name: email_to_alert
+
+nodes:
+  nodeType: nginxphp-dockerized
+  nodeGroup: cp
+  cloudlets: 32
+  extip: true
+  displayName: static_copy_nginx
+  diskLimit: 100
+
+onInstall: 
+  - setup
+
+actions:
+  setup:
+    cmd[cp]: curl https://raw.githubusercontent.com/cblanke2/static-mirror-jps/main/static_mirror_jps_setup.sh | /usr/bin/bash
+
+success: | 
+  **Initial Static Mirror Now Running!**
+
+ssl: false
+skipNodeEmails: true
