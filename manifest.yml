@@ -32,9 +32,10 @@ onInstall:
 actions:
   setup:
     cmd[cp]: |-
-      yum install httrack screen -y;
+      sudo yum update -y;
+      sudo yum install httrack screen -y;
       curl https://raw.githubusercontent.com/cblanke2/static-mirror-jps/main/static_mirror_jps_setup.sh > /var/lib/nginx/static_mirror_jps_setup.sh;
-      /usr/bin/bash /var/lib/nginx/static_mirror_jps_setup.sh ${settings.url_to_mirror} ${settings.email_to_alert};
+      screen -dm bash -c "bash /var/lib/nginx/static_mirror_jps_setup.sh ${settings.url_to_mirror} ${settings.email_to_alert}";
     
 
 success: | 
