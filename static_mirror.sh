@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 TIMESTAMP=$(date +%s)
-WORKING_DIR="/var/lib/nginx/mirror_temp"
-TARGET_DIR="/var/www/webroot/ROOT"
+WORKING_DIR="/root/mirror_temp"
+TARGET_DIR="/usr/share/nginx/html"
 TARGET_SITE=$1
 THIS_HOST=$(hostname)
 THIS_USER=$(whoami)

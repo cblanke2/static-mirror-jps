@@ -19,7 +19,8 @@ settings:
       name: email_to_alert
 
 nodes:
-  nodeType: nginxphp-dockerized
+  nodeType: docker
+  image: nginx:latest
   nodeGroup: cp
   cloudlets: 32
   extip: true
@@ -27,15 +28,15 @@ nodes:
   diskLimit: 100
 
 onInstall: 
-  - setup
-
-actions:
-  setup:
-    cmd[cp]: |-
-      sudo yum update -y;
-      sudo yum install httrack screen -y;
-      curl https://raw.githubusercontent.com/cblanke2/static-mirror-jps/main/static_mirror_jps_setup.sh > /var/lib/nginx/static_mirror_jps_setup.sh;
-      screen -dm bash -c "bash /var/lib/nginx/static_mirror_jps_setup.sh ${settings.url_to_mirror} ${settings.email_to_alert}";
+  cmd:
+    - unlink /var/log/nginx/error.log
+    - unlink /var/log/nginx/access.log
+    - apt-get update --yes
+    - apt-get upgrade --yes
+    - apt-get install httrack screen --yes
+    - curl https://raw.githubusercontent.com/cblanke2/static-mirror-jps/main/static_mirror_jps_setup.sh > /root/static_mirror_jps_setup.sh
+    - screen -dm bash -c "bash /root/static_mirror_jps_setup.sh ${settings.url_to_mirror} ${settings.email_to_alert}"
+  nodeGroup: cp
     
 
 success: | 
