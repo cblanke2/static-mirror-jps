@@ -31,7 +31,7 @@ onInstall:
 
 actions:
   setup:
-    cmd[cp]: curl https://raw.githubusercontent.com/cblanke2/static-mirror-jps/main/static_mirror_jps_setup.sh | /usr/bin/bash
+    cmd[cp]: curl https://raw.githubusercontent.com/cblanke2/static-mirror-jps/main/static_mirror_jps_setup.sh ${settings.url_to_mirror} ${settings.email_to_alert} | /usr/bin/bash
 
 success: | 
   **Initial Static Mirror Now Running!**
