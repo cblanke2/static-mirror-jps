@@ -1,6 +1,6 @@
 type: install
 id: static-copy-nginx
-name: Static Copy w/ Nginx
+name: Nginx Static Mirror
 
 description: 
   text: Host a static copy of a website with Nginx (and HTTrack).
