@@ -33,8 +33,8 @@ actions:
   setup:
     cmd[cp]: |-
       yum install httrack screen -y;
-      curl https://raw.githubusercontent.com/cblanke2/static-mirror-jps/main/static_mirror_jps_setup.sh > /root/static_mirror_jps_setup.sh;
-      /usr/bin/bash /root/static_mirror_jps_setup.sh ${settings.url_to_mirror} ${settings.email_to_alert};
+      curl https://raw.githubusercontent.com/cblanke2/static-mirror-jps/main/static_mirror_jps_setup.sh > /var/lib/nginx/static_mirror_jps_setup.sh;
+      /usr/bin/bash /var/lib/nginx/static_mirror_jps_setup.sh ${settings.url_to_mirror} ${settings.email_to_alert};
     
 
 success: | 
