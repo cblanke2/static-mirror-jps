@@ -21,7 +21,7 @@ if [[ $STATUS_CODE == "200" && $STATIC_FLAG == "404" ]]; then
 	if [[ -d $WORKING_DIR && -d $TARGET_DIR ]]; then
 		# Then update the mirror of the site with `httrack`	
 		/usr/bin/cd $WORKING_DIR && \
-		/usr/bin/httrack --update "https://$TARGET_SITE" -"*?*" -O $WORKING_DIR && \
+		/usr/bin/httrack --update "https://$TARGET_SITE" -%q0 -O $WORKING_DIR && \
 		/usr/bin/cd -
 		# Touch the static flag
 		/usr/bin/touch $WORKING_DIR/$TARGET_SITE/static_flag.html
