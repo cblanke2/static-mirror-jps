@@ -8,7 +8,7 @@ mkdir -p /root/mirror_temp
 
 # Perform inital mirroring of site
 if [[ -d /root/mirror_temp ]]; then
-	httrack --mirror 'https://$URL_TO_MIRROR' -"*?*" -O /root/mirror_temp && \
+	httrack --mirror "https://$URL_TO_MIRROR" -"*?*" -O /root/mirror_temp && \
 	rsync -azPI -q  /root/mirror_temp/$URL_TO_MIRROR/ /usr/share/nginx/html/
 fi
 
