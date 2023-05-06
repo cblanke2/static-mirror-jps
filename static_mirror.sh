@@ -9,7 +9,7 @@ THIS_USER=$(whoami)
 ALERT_EMAIL=$2
 
 # Initial Mirror
-# httrack --mirror "https://$TARGET_SITE" -"*?*" -O /root/mirror_temp
+# httrack --mirror "https://$TARGET_SITE" -%q0 -O /root/mirror_temp
 
 # Get status code of target site
 STATUS_CODE=$(/usr/bin/curl -o /dev/null -s -w "%{http_code}\n" https://$TARGET_SITE)
