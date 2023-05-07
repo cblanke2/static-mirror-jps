@@ -1,15 +1,9 @@
 #!/usr/bin/env bash
 
-# User/Server/Script-specific variables
-TIMESTAMP=$(/bin/date +%s)
-WORKING_DIR="/root/mirror_temp"
-TARGET_DIR="/usr/share/nginx/html"
-TARGET_SITE=$1
-THIS_HOST=$(/bin/hostname)
-THIS_USER=$(/usr/bin/whoami)
-ALERT_EMAIL=$2
-
 # Paths to binaries for portability
+DATE_PATH=$(/usr/bin/which date)
+HOSTNAME_PATH=$(/usr/bin/which hostname)
+WHOAMI_PATH=$(/usr/bin/which whoami)
 CURL_PATH=$(/usr/bin/which curl)
 HTTRACK_PATH=$(/usr/bin/which httrack)
 TOUCH_PATH=$(/usr/bin/which touch)
@@ -18,6 +12,15 @@ ECHO_PATH=$(/usr/bin/which echo)
 CAT_PATH=$(/usr/bin/which cat)
 SENDMAIL_PATH=$(/usr/bin/which sendmail)
 RM_PATH=$(/usr/bin/which rm)
+
+# User/Server/Script-specific variables
+WORKING_DIR="/root/mirror_temp"
+TARGET_DIR="/usr/share/nginx/html"
+TIMESTAMP=$($DATE_PATH +%s)
+THIS_HOST=$($HOSTNAME_PATH)
+THIS_USER=$($WHOAMI_PATH)
+TARGET_SITE=$1
+ALERT_EMAIL=$2
 
 # Get status code of target site
 STATUS_CODE=$($CURL_PATH -o /dev/null -s -w "%{http_code}\n" https://$TARGET_SITE)
