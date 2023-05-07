@@ -1,6 +1,6 @@
 type: install
-id: static-copy-nginx
-name: Nginx Static Mirror
+id: static-mirror-nginx
+name: Static Mirror (Nginx)
 
 description: 
   text: Host a static copy of a website with Nginx (and HTTrack).
@@ -24,7 +24,6 @@ nodes:
   nodeGroup: cp
   cloudlets: 32
   extip: true
-  displayName: static_copy_nginx
   diskLimit: 100
 
 onInstall: 

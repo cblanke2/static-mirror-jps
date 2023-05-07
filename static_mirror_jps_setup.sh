@@ -7,7 +7,7 @@ EMAIL_TO_ALERT=$2
 mkdir -p /root/mirror_temp
 
 # Perform inital mirroring of site
-httrack --mirror "https://$URL_TO_MIRROR" -%q0 -O /root/mirror_temp
+httrack --mirror "https://$URL_TO_MIRROR" -%q0 -s0 -O /root/mirror_temp
 rsync -azPI -q  /root/mirror_temp/$URL_TO_MIRROR/ /usr/share/nginx/html/
 
 # Copy static mirror script and set up cronjob

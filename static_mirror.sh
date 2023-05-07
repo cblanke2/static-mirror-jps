@@ -31,7 +31,7 @@ if [[ $STATUS_CODE == "200" && $STATIC_FLAG == "404" ]]; then
 	# And that the various dirs exist
 	if [[ -d $WORKING_DIR && -d $TARGET_DIR ]]; then
 		# Then update the mirror of the site with `httrack`	
-		$HTTRACK_PATH --update "https://$TARGET_SITE" -%q0 -O $WORKING_DIR
+		$HTTRACK_PATH --update "https://$TARGET_SITE" -%q0 -s0 -O $WORKING_DIR
 		# Touch the static flag
 		$TOUCH_PATH $WORKING_DIR/$TARGET_SITE/static_flag.html
 		# And move the files to the target directory
