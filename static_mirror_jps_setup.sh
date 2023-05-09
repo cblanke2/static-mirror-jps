@@ -27,7 +27,7 @@ yes "  " | openssl req -newkey rsa:4096 -x509 -sha256 -days 7300 -nodes -out /ro
 touch /etc/nginx/conf.d/ssl.conf
 echo "server {" >> /etc/nginx/conf.d/ssl.conf
 echo "    listen              443 ssl;" >> /etc/nginx/conf.d/ssl.conf
-echo "    server_name         localhost;" >> /etc/nginx/conf.d/ssl.conf
+echo "    server_name         _;" >> /etc/nginx/conf.d/ssl.conf
 echo "    ssl_certificate     /root/ssl/selfsigned.crt;" >> /etc/nginx/conf.d/ssl.conf
 echo "    ssl_certificate_key /root/ssl/selfsigned.key;" >> /etc/nginx/conf.d/ssl.conf
 echo "    ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;" >> /etc/nginx/conf.d/ssl.conf
