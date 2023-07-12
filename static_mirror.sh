@@ -23,8 +23,8 @@ TARGET_SITE=$1
 ALERT_EMAIL=$2
 
 # Get status code of target site
-STATUS_CODE=$($CURL_PATH -o /dev/null -s -w "%{http_code}\n" https://$TARGET_SITE)
-STATIC_FLAG=$($CURL_PATH -o /dev/null -s -w "%{http_code}\n" https://$TARGET_SITE/static_flag.html)
+STATUS_CODE=$($CURL_PATH -o /dev/null -s -w "%{http_code}\n" --tlsv1.3 https://$TARGET_SITE)
+STATIC_FLAG=$($CURL_PATH -o /dev/null -s -w "%{http_code}\n" --tlsv1.3 https://$TARGET_SITE/static_flag.html)
 
 # Check if main site is returning status code "200" and the static flag is a "404"
 if [[ $STATUS_CODE == "200" && $STATIC_FLAG == "404" ]]; then
